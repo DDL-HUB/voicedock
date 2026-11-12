@@ -1,0 +1,14 @@
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.dpapi
+pairing-code
+cloud-config.json
+audio-cache/
+release/
+*.wav
+*.mp3
+*.log

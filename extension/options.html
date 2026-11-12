@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VoiceDock 设置</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header><img src="icons/icon48.png" alt="" width="40" height="40"><h1>VoiceDock 设置</h1></header>
+    <section>
+      <h2>当前朗读预设</h2>
+      <p id="active-profile"></p>
+      <div class="actions">
+        <button id="use-browser">切为浏览器语音</button>
+        <button id="remove-profile">删除当前预设</button>
+      </div>
+    </section>
+    <section>
+      <h2>CosyVoice Flash</h2>
+      <p>在 Windows 上运行安装包中的 <code>setup-cloud.cmd</code>，输入你自己的阿里云百炼 API Key。运行 <code>start-cloud.cmd</code> 后，把安装时显示的本机连接码填在这里。</p>
+      <form id="connection-form">
+        <label for="pairing-code">本机连接码</label>
+        <input id="pairing-code" type="password" autocomplete="off" required minlength="43" maxlength="43" pattern="[A-Za-z0-9_\-]{43}">
+        <label class="consent"><input type="checkbox" required> 我同意使用 Flash 时将朗读文字发送给阿里云，并由我的百炼账号承担合成费用。</label>
+        <div class="actions"><button type="submit" class="primary">连接服务</button><button id="disconnect" type="button">断开连接</button></div>
+      </form>
+      <p id="status" role="status"></p>
+    </section>
+    <section>
+      <h2>使用方法</h2>
+      <p>在网页选中文字，再从工具栏打开扩展。微信读书阅读页也可以使用页面上的「读」按钮。连接 Flash 后，在弹窗中同步并选择自己账号里的音色。</p>
+      <p>扩展使用你的选区和阅读页正文来朗读及高亮。云端模式把文字交给本机服务，再由本机服务向阿里云发起合成。浏览器语音由系统或浏览器提供。</p>
+    </section>
+  </main>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

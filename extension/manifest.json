@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "VoiceDock 网页朗读",
+  "version": "1.1.0",
+  "description": "选中文字开始朗读，支持同步高亮及微信读书续读。可选 CosyVoice Flash。",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "tts",
+    "storage",
+    "offscreen",
+    "alarms"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8766/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://weread.qq.com/web/reader/*"
+      ],
+      "js": [
+        "weread-canvas.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://weread.qq.com/web/reader/*"
+      ],
+      "js": [
+        "reading.js",
+        "reading-content.js",
+        "content.js",
+        "reader-ball.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "VoiceDock"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png",
+    "512": "icons/icon512.png"
+  },
+  "minimum_chrome_version": "120"
+}

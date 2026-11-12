@@ -1,0 +1,22 @@
+:root {
+  color-scheme: dark;
+  font: 16px/1.65 system-ui, "Microsoft YaHei", sans-serif;
+  background: #181724;
+  color: #f3eef9;
+}
+body { margin: 0; }
+main { max-width: 740px; margin: 0 auto; padding: 30px 20px 60px; }
+header, .actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+h1 { font-size: 26px; }
+h2 { font-size: 18px; margin-top: 0; }
+section { padding: 22px; margin-top: 14px; background: #252235; border: 1px solid #45405a; border-radius: 14px; }
+p { color: #d4cde3; }
+code { color: #dcc4f8; }
+label { display: block; margin: 10px 0; }
+input[type=password] { box-sizing: border-box; width: 100%; padding: 10px 12px; border: 1px solid #6f6482; border-radius: 8px; background: #181724; color: inherit; font: inherit; }
+input[type=checkbox] { accent-color: #c4a4ef; }
+button { padding: 8px 14px; border: 1px solid #716581; border-radius: 8px; background: #383048; color: inherit; font: inherit; cursor: pointer; }
+button.primary { background: #c4a4ef; color: #241731; border-color: #c4a4ef; }
+button:disabled { opacity: .55; cursor: default; }
+:focus-visible { outline: 2px solid #ddc4ff; outline-offset: 3px; }
+#status { min-height: 1.65em; margin-bottom: 0; }

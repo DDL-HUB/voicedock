@@ -1,0 +1,367 @@
+/* ─── Reset ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  width: 300px;
+  min-height: 100px;
+}
+
+/* ─── App Shell ──────────────────────────────────────────────────────────────── */
+.app {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────────── */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #313244;
+}
+
+.app-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.app-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #cba6f7;
+  letter-spacing: 0.02em;
+  flex: 1;
+}
+
+.app-version {
+  font-size: 11px;
+  color: #6c7086;
+  flex-shrink: 0;
+}
+
+/* Status dot */
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #45475a;
+  flex-shrink: 0;
+  transition: background 0.25s;
+}
+.status-dot.online  { background: #a6e3a1; }
+.status-dot.offline { background: #f38ba8; }
+
+/* Gear button - bigger, more visible */
+.btn-gear {
+  background: #313244;
+  border: 1px solid #45475a;
+  color: #a6adc8;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 7px;
+  line-height: 1;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+  outline: none;
+  flex-shrink: 0;
+}
+.btn-gear:hover { color: #cba6f7; background: #45475a; border-color: #cba6f7; }
+
+/* ─── Profile Card ───────────────────────────────────────────────────────────── */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #313244;
+  border: 1px solid #45475a;
+  border-radius: 10px;
+  padding: 11px 10px;
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+/* Profile name - the hero element, must be large and readable */
+.profile-name {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #cdd6f4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.profile-voice {
+  display: block;
+  font-size: 12px;
+  color: #bac2de;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Nav arrows - bigger tap targets */
+.btn-nav {
+  background: #1e1e2e;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  color: #a6adc8;
+  font-size: 18px;
+  line-height: 1;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  outline: none;
+}
+.btn-nav:hover:not(:disabled) { background: #45475a; color: #cba6f7; border-color: #cba6f7; }
+.btn-nav:disabled { opacity: 0.2; cursor: default; }
+
+/* Plus button */
+.btn-add-profile {
+  background: #1e1e2e;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  color: #a6adc8;
+  font-size: 16px;
+  line-height: 1;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  outline: none;
+}
+.btn-add-profile:hover { background: #1e3a2a; color: #a6e3a1; border-color: #a6e3a1; }
+
+/* ─── Sliders ─────────────────────────────────────────────────────────────────── */
+.sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Slider label - readable size, better contrast */
+.slider-lbl {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #a6adc8;
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: #45475a;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #cba6f7;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.slider::-webkit-slider-thumb:hover { background: #d4b0ff; transform: scale(1.15); }
+.slider::-moz-range-thumb {
+  width: 16px; height: 16px; border: none;
+  border-radius: 50%; background: #cba6f7; cursor: pointer;
+}
+
+/* Slider value - larger, always readable */
+.slider-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: #cba6f7;
+  width: 34px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ─── Action Buttons ─────────────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  outline: none;
+  letter-spacing: 0.01em;
+}
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.4; cursor: default; transform: none; }
+
+.btn-test       { background: #cba6f7; color: #1e1e2e; }
+.btn-test:hover { opacity: 0.88; }
+
+.btn-stop       { background: #313244; color: #f38ba8; border: 1px solid #585b70; }
+.btn-stop:hover { background: #3a1e1e; border-color: #f38ba8; }
+
+/* ─── Playback Progress ─────────────────────────────────────────────────────── */
+.progress-card {
+  background: #1e1e2e;
+  border: 1px solid #313244;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.progress-status {
+  font-size: 11px;
+  font-weight: 700;
+  color: #cdd6f4;
+  flex: 1;
+}
+
+.progress-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a6adc8;
+}
+
+.progress-track {
+  height: 4px;
+  background: #45475a;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: #cba6f7;
+  border-radius: inherit;
+  transition: width 0.2s ease;
+}
+
+.progress-fill.is-indeterminate {
+  width: 45%;
+  animation: progress-pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes progress-pulse {
+  from { transform: translateX(-70%); }
+  to   { transform: translateX(130%); }
+}
+
+/* ─── Test Error ─────────────────────────────────────────────────────────────── */
+.test-error {
+  font-size: 12px;
+  color: #f38ba8;
+  background: #3a1e1e;
+  border: 1px solid #5a2e2e;
+  border-radius: 7px;
+  padding: 7px 11px;
+  line-height: 1.4;
+  margin-top: -4px;
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────────── */
+.footer-hint {
+  font-size: 11px;
+  color: #6c7086;
+  line-height: 1.4;
+  padding-top: 7px;
+  border-top: 1px solid #313244;
+  text-align: center;
+}
+.footer-hint em { color: #a6adc8; font-style: normal; font-weight: 600; }
+
+/* ─── Inline New-Profile Form ────────────────────────────────────────────────── */
+.new-profile-form {
+  background: #313244;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.new-profile-header {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #a6adc8;
+}
+
+.new-profile-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border: 1px solid #45475a;
+  border-radius: 6px;
+  padding: 7px 9px;
+  font-size: 12px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+.new-profile-input:focus { border-color: #cba6f7; }
+.new-profile-input::placeholder { color: #6c7086; }
+
+.new-profile-actions { display: flex; gap: 8px; }
+
+.new-profile-save   { background: #cba6f7; color: #1e1e2e; padding: 7px 0; }
+.new-profile-save:hover { opacity: 0.88; }
+.new-profile-cancel { background: #1e1e2e; color: #a6adc8; border: 1px solid #45475a; padding: 7px 0; }
+.new-profile-cancel:hover { background: #45475a; }
+
+/* ─── Utility ────────────────────────────────────────────────────────────────── */
+.hidden { display: none !important; }

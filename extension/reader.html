@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>我的朗读窗口</title>
+<style>
+:root{color-scheme:dark;font:16px/1.7 system-ui;background:#1e1e2e;color:#e8e6f0}body{max-width:1000px;margin:0 auto;padding:28px}header{display:flex;align-items:center;gap:20px;border-bottom:1px solid #454151;margin-bottom:20px}header p{color:#b7a7d0}h1{font-size:24px;margin:0}button{border:1px solid #514963;border-radius:8px;background:#393044;color:#eee;padding:9px 16px;font:inherit;cursor:pointer}button.primary{background:#c4a0ef;color:#241c30;font-weight:650}button:disabled{opacity:.4;cursor:default}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;position:sticky;top:0;background:#1e1e2ef5;padding:15px 0;z-index:1}.preferences{display:flex;gap:22px;flex-wrap:wrap;margin:14px 0;color:#c8c1d5}textarea{width:100%;box-sizing:border-box;min-height:150px;max-height:65vh;resize:vertical;background:#252334;color:#eee;border:1px solid #50485d;border-radius:9px;padding:16px;font:17px/1.7 system-ui}summary{cursor:pointer;color:#c9aeed}#reading-view{font:21px/1.95 Georgia,'Microsoft YaHei',serif;white-space:pre-wrap;padding:28px 32px;border:1px solid #3c3749;border-radius:12px;min-height:200px;margin-top:20px}.sentence.active{background:#f4d16c;color:#211b12;border-radius:4px;box-shadow:0 0 0 3px #f4d16c}.sentence{cursor:text}#status{color:#c7b6df;min-height:28px}small{color:#a79bb7}label{cursor:pointer}input[type=range]{vertical-align:middle;width:130px}
+</style>
+<header><h1>我的朗读窗口</h1><p>从一句话开始，安静地读下去</p></header>
+<div class="toolbar"><button id="read" class="primary">从头朗读</button><button id="from-cursor">从光标处读</button><button id="pause">暂停 / 继续</button><button id="stop">停止</button><label>语速 <input id="rate" type="range" min="0.5" max="2.5" step="0.1" value="1"><span id="rate-value">1.0×</span></label></div>
+<p id="voice" aria-live="polite">正在读取当前音色…</p>
+<p id="status">准备就绪</p>
+<details id="editor"><summary>展开 / 收起粘贴与编辑区</summary><textarea id="input" aria-label="阅读文字" placeholder="粘贴中英文内容。也可以先选中网页正文，再打开这个窗口。"></textarea></details>
+<div class="preferences"><label><input id="show-text" type="checkbox" checked>显示阅读内容</label><label><input id="highlight" type="checkbox" checked>同步高亮</label><label><input id="follow" type="checkbox" checked>跟随当前句</label></div>
+<small>按句高亮；双击某句可从那里继续读。网页模式只读取当前已加载正文，评论跳过头像与操作按钮。</small>
+<main id="reading-view" aria-label="朗读正文"></main>
+<script src="reading.js"></script><script src="reader.js"></script></html>
